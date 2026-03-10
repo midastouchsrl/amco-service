@@ -96,7 +96,7 @@ export function CookieBanner() {
                 {COOKIE_BANNER.reject}
               </Button>
               <Button
-                variant="default"
+                variant="outline"
                 onClick={handleAccept}
                 className="min-w-[100px]"
               >

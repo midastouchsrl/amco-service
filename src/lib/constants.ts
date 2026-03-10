@@ -604,6 +604,7 @@ export const PRIVACY = {
         `${COMPANY.name}`,
         `${COMPANY.address}`,
         `Email: ${COMPANY.email}`,
+        `PEC: ${COMPANY.pec}`,
         `Tel: ${COMPANY.phone1}`,
       ],
     },
@@ -645,6 +646,7 @@ export const PRIVACY = {
         "Hosting provider: Vercel Inc. (per il funzionamento del sito)",
         "Servizio anti-spam: Friendly Captcha (se configurato — provider europeo)",
         "Servizio invio email: Resend/Brevo (per l'invio delle email dei form)",
+        "Portale condomini: MioCondominio.eu (per l'accesso all'area riservata)",
       ],
     },
     transfers: {
@@ -669,6 +671,7 @@ export const PRIVACY = {
         "Limitazione (art. 18)",
         "Portabilità (art. 20)",
         "Opposizione (art. 21)",
+        "Revoca del consenso (art. 7.3)",
       ],
       complaint: {
         label: "Reclamo all'Autorità Garante:",
@@ -753,12 +756,6 @@ export const COOKIE_BANNER = {
         name: "Cookie tecnici",
         description: "Necessari per il funzionamento del sito. Non possono essere disattivati.",
         required: true,
-      },
-      {
-        id: "analytics",
-        name: "Cookie analitici",
-        description: "Ci aiutano a capire come utilizzi il sito per migliorarlo.",
-        required: false,
       },
     ],
     save: "Salva preferenze",
