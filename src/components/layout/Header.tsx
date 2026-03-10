@@ -17,7 +17,7 @@ export function Header() {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -25,9 +25,9 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out",
           isScrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm"
+            ? "bg-white/90 backdrop-blur-xl shadow-[0_1px_3px_0_rgb(0_0_0/0.05)] border-b border-border/40"
             : "bg-transparent"
         )}
       >
@@ -36,19 +36,24 @@ export function Header() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 font-bold text-xl text-foreground"
+              className="flex items-center gap-1.5 text-xl font-bold tracking-tight"
             >
               <span className="text-brand">AMCO</span>
-              <span className="text-foreground">Service</span>
+              <span className={cn(
+                "transition-colors duration-500",
+                isScrolled ? "text-foreground" : "text-foreground"
+              )}>
+                Service
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-0.5">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-4 py-2 text-sm font-medium text-text hover:text-brand transition-colors"
+                  className="relative px-4 py-2 text-sm font-medium text-text hover:text-brand transition-colors duration-200"
                 >
                   {item.label}
                 </Link>
@@ -57,21 +62,21 @@ export function Header() {
               {/* Emergenze link */}
               <Link
                 href={EMERGENCY_NAV.href}
-                className="px-4 py-2 text-sm font-medium text-emergency hover:text-emergency/80 transition-colors flex items-center gap-1.5"
+                className="px-4 py-2 text-sm font-medium text-emergency hover:text-emergency/80 transition-colors duration-200 flex items-center gap-1.5"
               >
-                <AlertTriangle className="w-4 h-4" />
+                <AlertTriangle className="w-3.5 h-3.5" />
                 {EMERGENCY_NAV.label}
               </Link>
 
               {/* CTA Button */}
-              <Button asChild className="ml-4">
+              <Button asChild className="ml-4 shadow-sm">
                 <Link href={NAV_CTA.href}>{NAV_CTA.label}</Link>
               </Button>
             </nav>
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 text-foreground hover:text-brand transition-colors"
+              className="lg:hidden p-2 text-foreground hover:text-brand transition-colors duration-200"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Apri menu"
             >

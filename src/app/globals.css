@@ -165,6 +165,34 @@
   .link-underline:hover::after {
     @apply w-full;
   }
+
+  /* Services grid: center orphan items on last row */
+  .services-grid {
+    justify-items: center;
+  }
+  .services-grid > * {
+    width: 100%;
+  }
+  @media (min-width: 1024px) {
+    /* When last child is alone (position 3n+1), center it */
+    .services-grid > :last-child:nth-child(3n+1) {
+      grid-column: 2;
+    }
+    /* When last two children fill 2 of 3, center them */
+    .services-grid > :nth-last-child(2):nth-child(3n+1) {
+      grid-column: 1 / 2;
+    }
+  }
+
+  /* Subtle gradient background for premium sections */
+  .bg-gradient-subtle {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+  }
+
+  /* Glass morphism card effect */
+  .glass-card {
+    @apply backdrop-blur-sm bg-white/80 border border-white/20;
+  }
 }
 
 /* Accordion animations */

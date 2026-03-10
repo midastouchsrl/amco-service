@@ -21,13 +21,16 @@ export default function CookiePolicyPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="section-padding bg-surface">
+      <section className="py-20 lg:py-28 bg-surface">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h1 className="text-3xl sm:text-4xl lg:text-hero font-bold text-foreground mb-4 leading-tight">
+            <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
+              Legale
+            </p>
+            <h1 className="text-3xl sm:text-4xl lg:text-hero font-bold text-foreground mb-5 leading-tight tracking-tight">
               {COOKIE_POLICY.hero.title}
             </h1>
-            <p className="text-lg text-text">
+            <p className="text-lg text-muted-foreground leading-relaxed">
               {COOKIE_POLICY.hero.subtitle}
             </p>
           </div>
@@ -35,10 +38,10 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* Intro Section */}
-      <section className="section-padding bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
+            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4 tracking-tight">
               {COOKIE_POLICY.intro.title}
             </h2>
             <p className="text-text leading-relaxed">
@@ -49,31 +52,31 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* Cookie Table Section */}
-      <section className="section-padding bg-surface">
+      <section className="py-16 lg:py-20 bg-surface">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-6">
+            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-8 tracking-tight">
               {COOKIE_POLICY.cookies.title}
             </h2>
 
             {/* Responsive Table */}
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-2xl border border-border/40 bg-white">
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="border-b border-border">
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-foreground bg-muted rounded-tl-lg">
+                  <tr className="border-b border-border/40">
+                    <th className="text-left py-4 px-5 text-xs font-semibold text-muted-foreground tracking-wider uppercase bg-surface/50">
                       Nome
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-foreground bg-muted">
+                    <th className="text-left py-4 px-5 text-xs font-semibold text-muted-foreground tracking-wider uppercase bg-surface/50">
                       Tipo
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-foreground bg-muted">
+                    <th className="text-left py-4 px-5 text-xs font-semibold text-muted-foreground tracking-wider uppercase bg-surface/50">
                       Finalità
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-foreground bg-muted">
+                    <th className="text-left py-4 px-5 text-xs font-semibold text-muted-foreground tracking-wider uppercase bg-surface/50">
                       Durata
                     </th>
-                    <th className="text-left py-3 px-4 text-sm font-semibold text-foreground bg-muted rounded-tr-lg">
+                    <th className="text-left py-4 px-5 text-xs font-semibold text-muted-foreground tracking-wider uppercase bg-surface/50">
                       Parte
                     </th>
                   </tr>
@@ -82,23 +85,27 @@ export default function CookiePolicyPage() {
                   {COOKIE_POLICY.cookies.items.map((cookie, index) => (
                     <tr
                       key={cookie.name}
-                      className={`border-b border-border last:border-b-0 ${
-                        index % 2 === 0 ? "bg-white" : "bg-muted/50"
+                      className={`border-b border-border/30 last:border-b-0 ${
+                        index % 2 === 1 ? "bg-surface/30" : ""
                       }`}
                     >
-                      <td className="py-3 px-4 text-sm text-foreground font-medium">
-                        {cookie.name}
+                      <td className="py-4 px-5 text-sm text-foreground font-medium">
+                        <code className="rounded-md bg-surface px-2 py-0.5 text-xs font-mono">
+                          {cookie.name}
+                        </code>
                       </td>
-                      <td className="py-3 px-4 text-sm text-text">
-                        {cookie.type}
+                      <td className="py-4 px-5 text-sm text-text">
+                        <span className="inline-flex items-center rounded-full bg-brand-subtle px-2.5 py-0.5 text-xs font-medium text-brand">
+                          {cookie.type}
+                        </span>
                       </td>
-                      <td className="py-3 px-4 text-sm text-text">
+                      <td className="py-4 px-5 text-sm text-text leading-relaxed">
                         {cookie.purpose}
                       </td>
-                      <td className="py-3 px-4 text-sm text-text">
+                      <td className="py-4 px-5 text-sm text-text">
                         {cookie.duration}
                       </td>
-                      <td className="py-3 px-4 text-sm text-text">
+                      <td className="py-4 px-5 text-sm text-text">
                         {cookie.party}
                       </td>
                     </tr>
@@ -111,40 +118,41 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* Browser Management Section */}
-      <section className="section-padding bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
+            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4 tracking-tight">
               {COOKIE_POLICY.manage.title}
             </h2>
-            <p className="text-text leading-relaxed mb-6">
+            <p className="text-text leading-relaxed mb-8">
               Puoi gestire le preferenze dei cookie direttamente dalle impostazioni del tuo browser. Ecco le guide ufficiali per i browser più comuni:
             </p>
 
-            <ul className="space-y-3">
+            <div className="grid sm:grid-cols-2 gap-3">
               {COOKIE_POLICY.manage.browsers.map((browser) => (
-                <li key={browser.name}>
-                  <a
-                    href={browser.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-brand hover:text-brand-dark transition-colors link-underline"
-                  >
-                    <span>{browser.name}</span>
-                    <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                  </a>
-                </li>
+                <a
+                  key={browser.name}
+                  href={browser.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 rounded-xl border border-border/40 bg-surface/50 p-4 transition-all duration-200 hover:border-brand/20 hover:bg-surface"
+                >
+                  <span className="font-medium text-foreground group-hover:text-brand transition-colors">
+                    {browser.name}
+                  </span>
+                  <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-brand transition-colors ml-auto" aria-hidden="true" />
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Revoke Consent Section */}
-      <section className="section-padding bg-surface">
+      <section className="py-16 lg:py-20 bg-surface">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
+            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4 tracking-tight">
               {COOKIE_POLICY.revoke.title}
             </h2>
             <p className="text-text leading-relaxed">
@@ -155,7 +163,7 @@ export default function CookiePolicyPage() {
       </section>
 
       {/* Last Update Section */}
-      <section className="py-8 bg-white border-t border-border">
+      <section className="py-8 bg-white border-t border-border/40">
         <div className="container-text">
           <div className="max-w-3xl">
             <p className="text-sm text-muted-foreground">

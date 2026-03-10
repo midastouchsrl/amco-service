@@ -1,7 +1,9 @@
 /**
- * Helper per l'invio di email
- * Placeholder per servizio email (Resend/Brevo)
+ * Servizio email con Resend
+ * In sviluppo logga in console, in produzione invia tramite Resend
  */
+
+import { Resend } from "resend";
 
 interface EmailPayload {
   to: string;
@@ -19,12 +21,10 @@ interface ContactFormData {
 }
 
 interface PreventivoFormData {
-  // Dati richiedente
   name: string;
   surname: string;
   phone: string;
   email: string;
-  // Dati stabile
   address: string;
   city: string;
   province: string;
@@ -110,14 +110,14 @@ Inviato il: ${new Date().toLocaleString("it-IT", { timeZone: "Europe/Rome" })}
 
 /**
  * Invia un'email usando il servizio configurato
- * Attualmente placeholder - fare console.log finché il servizio non è configurato
+ * In sviluppo (EMAIL_SERVICE=console o non impostato): logga in console
+ * In produzione (EMAIL_SERVICE=resend): invia tramite Resend
  */
 export async function sendEmail(payload: EmailPayload): Promise<{ success: boolean; error?: string }> {
-  // Se non c'è un servizio email configurato, logga e ritorna successo
-  // Questo permette di testare il flusso senza configurare un servizio reale
+  // Modalità sviluppo: logga in console
   if (!process.env.EMAIL_SERVICE || process.env.EMAIL_SERVICE === "console") {
     console.log("\n========================================");
-    console.log("📧 EMAIL (Modalità sviluppo)");
+    console.log("EMAIL (Modalità sviluppo)");
     console.log("========================================");
     console.log(`A: ${payload.to}`);
     console.log(`Da: ${payload.from}`);
@@ -129,24 +129,43 @@ export async function sendEmail(payload: EmailPayload): Promise<{ success: boole
     return { success: true };
   }
 
-  // TODO: Implementare invio reale con Resend o Brevo
-  // Esempio con Resend:
-  // const { data, error } = await resend.emails.send({
-  //   from: payload.from,
-  //   to: payload.to,
-  //   subject: payload.subject,
-  //   text: payload.text,
-  //   html: payload.html,
-  // });
+  // Produzione: invio con Resend
+  if (process.env.EMAIL_SERVICE === "resend") {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error("RESEND_API_KEY non configurata");
+      return { success: false, error: "Servizio email non configurato correttamente." };
+    }
+
+    try {
+      const resend = new Resend(apiKey);
+      const { error } = await resend.emails.send({
+        from: payload.from,
+        to: payload.to,
+        subject: payload.subject,
+        text: payload.text,
+      });
+
+      if (error) {
+        console.error("Errore Resend:", error);
+        return { success: false, error: "Errore nell'invio dell'email." };
+      }
+
+      return { success: true };
+    } catch (err) {
+      console.error("Errore invio email Resend:", err);
+      return { success: false, error: "Errore nell'invio dell'email." };
+    }
+  }
 
   return {
     success: false,
-    error: "Servizio email non configurato. Configurare EMAIL_SERVICE nelle variabili d'ambiente.",
+    error: "Servizio email non configurato. Impostare EMAIL_SERVICE nelle variabili d'ambiente.",
   };
 }
 
 /**
- * Invia email di conferma al contatto (form contatto)
+ * Invia notifica email per form contatto
  */
 export async function sendContactEmail(data: ContactFormData): Promise<{ success: boolean; error?: string }> {
   const text = formatContactEmail(data);
@@ -160,7 +179,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<{ success
 }
 
 /**
- * Invia email di conferma al contatto (form preventivo)
+ * Invia notifica email per form preventivo
  */
 export async function sendPreventivoEmail(data: PreventivoFormData): Promise<{ success: boolean; error?: string }> {
   const text = formatPreventivoEmail(data);

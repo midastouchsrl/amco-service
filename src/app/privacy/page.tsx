@@ -58,7 +58,7 @@ export default function PrivacyPage() {
                 <thead>
                   <tr className="border-b border-border">
                     <th className="text-left py-3 pr-4 font-medium text-foreground">
-                      Finalita
+                      Finalit&agrave;
                     </th>
                     <th className="text-left py-3 px-4 font-medium text-foreground">
                       Base giuridica

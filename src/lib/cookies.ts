@@ -1,6 +1,5 @@
 export type CookiePreferences = {
   technical: boolean
-  analytics: boolean
 }
 
 export type StoredConsent = {

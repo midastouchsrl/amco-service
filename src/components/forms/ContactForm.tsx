@@ -49,7 +49,7 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Se il honeypot e compilato, probabilmente e un bot
+    // Se il honeypot è compilato, probabilmente è un bot
     if (data.honeypot) {
       console.log("Honeypot triggered - possible bot");
       return;
@@ -67,6 +67,7 @@ export function ContactForm() {
           subject: data.subject,
           message: data.message,
           privacy: data.privacy,
+          honeypot: data.honeypot,
         }),
       });
 

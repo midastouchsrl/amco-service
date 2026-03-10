@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import Image from "next/image";
 import {
   Receipt,
   MonitorSmartphone,
@@ -21,7 +22,6 @@ import {
   Percent,
   type LucideIcon,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { SERVIZI, SITE_META } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -36,7 +36,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Mappa delle icone
 const iconMap: Record<string, LucideIcon> = {
   Receipt,
   MonitorSmartphone,
@@ -69,23 +68,21 @@ function ServiceCard({ title, description, icon }: ServiceCardProps) {
   const IconComponent = iconMap[icon];
 
   return (
-    <Card className="group h-full border-0 bg-transparent shadow-none">
-      <CardContent className="p-0">
-        <div className="flex gap-4">
-          <div className="flex-shrink-0">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-subtle transition-colors group-hover:bg-brand/20">
-              {IconComponent && (
-                <IconComponent className="h-6 w-6 text-brand" aria-hidden="true" />
-              )}
-            </div>
-          </div>
-          <div className="flex-1 min-w-0">
-            <h3 className="font-semibold text-foreground mb-1">{title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+    <div className="group relative h-full rounded-2xl border border-border/60 bg-white p-6 transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5">
+      <div className="flex items-start gap-4">
+        <div className="flex-shrink-0">
+          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-subtle transition-colors duration-300 group-hover:bg-brand/15">
+            {IconComponent && (
+              <IconComponent className="h-5 w-5 text-brand" aria-hidden="true" />
+            )}
           </div>
         </div>
-      </CardContent>
-    </Card>
+        <div className="flex-1 min-w-0">
+          <h3 className="font-semibold text-foreground mb-1.5 leading-snug">{title}</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
@@ -95,23 +92,29 @@ interface ServiceSectionProps {
   description: string;
   services: ReadonlyArray<{ title: string; description: string; icon: string }>;
   variant: "white" | "surface";
+  imagePosition?: "left" | "right";
 }
 
 function ServiceSection({ id, title, description, services, variant }: ServiceSectionProps) {
   return (
     <section
       id={id}
-      className={`py-16 md:py-24 ${variant === "surface" ? "bg-surface" : "bg-white"}`}
+      className={`py-20 md:py-28 ${variant === "surface" ? "bg-surface" : "bg-white"}`}
     >
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="mx-auto max-w-3xl text-center mb-12 md:mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl mb-4">
+      <div className="container-custom">
+        {/* Section header */}
+        <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
+          <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
+            I nostri servizi
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl mb-5">
             {title}
           </h2>
-          <p className="text-lg text-muted-foreground">{description}</p>
+          <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
         </div>
 
-        <div className="grid gap-6 md:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Services grid - 3 columns with centered orphan items */}
+        <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 services-grid">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -131,34 +134,67 @@ export default function ServiziPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* Hero with image */}
+      <section className="relative overflow-hidden bg-foreground">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/verona-panorama.jpg"
+            alt="Panorama di Verona"
+            fill
+            className="object-cover object-center opacity-40"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/80" />
+        </div>
+
+        <div className="relative z-10 container-custom py-24 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl mb-4">
+            <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
+              AMCO Service
+            </p>
+            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-hero mb-6">
               {hero.title}
             </h1>
-            <p className="text-lg text-muted-foreground">{hero.subtitle}</p>
+            <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+              {hero.subtitle}
+            </p>
           </div>
         </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
 
-      {/* Sezione Amministrazione Condominiale */}
+      {/* Amministrazione Condominiale */}
       <ServiceSection
         id={categories.administration.id}
         title={categories.administration.title}
         description={categories.administration.description}
         services={categories.administration.services}
         variant="surface"
+        imagePosition="left"
       />
 
-      {/* Sezione Elaborazione Dati */}
+      {/* Divider with image */}
+      <div className="relative h-64 md:h-80 overflow-hidden">
+        <Image
+          src="/images/verona-buildings.jpg"
+          alt="Architettura veronese"
+          fill
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand/20 via-transparent to-brand/20" />
+        <div className="absolute inset-0 bg-black/20" />
+      </div>
+
+      {/* Elaborazione Dati */}
       <ServiceSection
         id={categories.dataProcessing.id}
         title={categories.dataProcessing.title}
         description={categories.dataProcessing.description}
         services={categories.dataProcessing.services}
         variant="white"
+        imagePosition="right"
       />
     </>
   );
