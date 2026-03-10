@@ -16,7 +16,6 @@ export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
   const [showPanel, setShowPanel] = useState(false)
 
-  // Controlla se esiste già un consenso salvato
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent")
     if (!consent) {
@@ -24,7 +23,6 @@ export function CookieBanner() {
     }
   }, [])
 
-  // Salva il consenso nel localStorage
   const saveConsent = (preferences: ConsentStorage["preferences"]) => {
     const stored: ConsentStorage = {
       timestamp: Date.now(),
@@ -34,20 +32,14 @@ export function CookieBanner() {
     setIsVisible(false)
   }
 
-  // Accetta tutti i cookie (solo tecnici)
   const handleAccept = () => {
-    saveConsent({
-      technical: true,
-    })
+    saveConsent({ technical: true })
   }
 
-  // Rifiuta i cookie non tecnici (solo tecnici,  const handleReject = () => {
-    saveConsent({
-      technical: true,
-    })
+  const handleReject = () => {
+    saveConsent({ technical: true })
   }
 
-  // Chiudi il pannello preferenze
   const handleClosePanel = () => {
     setShowPanel(false)
   }
@@ -60,7 +52,6 @@ export function CookieBanner() {
       <div className="fixed bottom-0 left-0 right-0 z-50 p-4 bg-white/95 backdrop-blur-sm border-t border-gray-200 shadow-lg">
         <div className="max-w-4xl mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            {/* Testo */}
             <div className="flex-1">
               <h3 className="font-semibold text-foreground mb-1">
                 {COOKIE_BANNER.title}
@@ -70,7 +61,6 @@ export function CookieBanner() {
               </p>
             </div>
 
-            {/* Pulsanti */}
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <Button
                 variant="outline"
@@ -96,7 +86,6 @@ export function CookieBanner() {
             </div>
           </div>
 
-          {/* Link alla Cookie Policy */}
           <div className="mt-2">
             <a
               href="/cookie-policy"
@@ -112,7 +101,6 @@ export function CookieBanner() {
       {showPanel && (
         <div className="fixed inset-0 z-[60] bg-black/50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
-            {/* Header pannello */}
             <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <h3 className="text-lg font-semibold text-foreground">
                 {COOKIE_BANNER.panel.title}
@@ -139,15 +127,9 @@ export function CookieBanner() {
               </button>
             </div>
 
-            {/* Contenuto pannello - Solo cookie tecnici */}
             <div className="p-6 space-y-6">
-              {/* Cookie tecnici */}
               <div className="flex items-start gap-3">
-                <Checkbox
-                  checked={true}
-                  disabled
-                  className="mt-0.5"
-                />
+                <Checkbox checked={true} disabled className="mt-0.5" />
                 <div className="flex-1">
                   <p className="font-medium text-foreground">
                     {COOKIE_BANNER.panel.categories[0].name}
@@ -158,7 +140,6 @@ export function CookieBanner() {
                 </div>
               </div>
 
-              {/* Link alla Cookie Policy */}
               <div className="pt-2">
                 <a
                   href="/cookie-policy"
@@ -169,20 +150,11 @@ export function CookieBanner() {
               </div>
             </div>
 
-            {/* Footer pannello */}
             <div className="flex gap-3 p-6 border-t border-gray-200">
-              <Button
-                variant="outline"
-                onClick={handleClosePanel}
-                className="flex-1"
-              >
+              <Button variant="outline" onClick={handleClosePanel} className="flex-1">
                 {COOKIE_BANNER.close}
               </Button>
-              <Button
-                variant="default"
-                onClick={handleAccept}
-                className="flex-1"
-              >
+              <Button variant="default" onClick={handleAccept} className="flex-1">
                 {COOKIE_BANNER.panel.save}
               </Button>
             </div>
