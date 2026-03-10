@@ -5,21 +5,16 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { COOKIE_BANNER } from "@/lib/constants"
 
-// Tipi
-type CookiePreferences = {
-  technical: boolean
-  analytics: boolean
-}
-
 type ConsentStorage = {
   timestamp: number
-  preferences: CookiePreferences
+  preferences: {
+    technical: boolean
+  }
 }
 
 export function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false)
   const [showPanel, setShowPanel] = useState(false)
-  const [analytics, setAnalytics] = useState(false)
 
   // Controlla se esiste già un consenso salvato
   useEffect(() => {
@@ -30,7 +25,7 @@ export function CookieBanner() {
   }, [])
 
   // Salva il consenso nel localStorage
-  const saveConsent = (preferences: CookiePreferences) => {
+  const saveConsent = (preferences: ConsentStorage["preferences"]) => {
     const stored: ConsentStorage = {
       timestamp: Date.now(),
       preferences,
@@ -39,27 +34,16 @@ export function CookieBanner() {
     setIsVisible(false)
   }
 
-  // Accetta tutti i cookie
+  // Accetta tutti i cookie (solo tecnici)
   const handleAccept = () => {
     saveConsent({
       technical: true,
-      analytics: true,
     })
   }
 
-  // Rifiuta i cookie non tecnici
-  const handleReject = () => {
+  // Rifiuta i cookie non tecnici (solo tecnici,  const handleReject = () => {
     saveConsent({
       technical: true,
-      analytics: false,
-    })
-  }
-
-  // Salva preferenze personalizzate
-  const handleSavePreferences = () => {
-    saveConsent({
-      technical: true,
-      analytics: analytics,
     })
   }
 
@@ -91,14 +75,14 @@ export function CookieBanner() {
               <Button
                 variant="outline"
                 onClick={handleReject}
-                className="min-w-[100px]"
+                className="min-w-[100px] border-brand text-brand hover:bg-brand hover:text-white"
               >
                 {COOKIE_BANNER.reject}
               </Button>
               <Button
                 variant="outline"
                 onClick={handleAccept}
-                className="min-w-[100px]"
+                className="min-w-[100px] border-brand text-brand hover:bg-brand hover:text-white"
               >
                 {COOKIE_BANNER.accept}
               </Button>
@@ -155,7 +139,7 @@ export function CookieBanner() {
               </button>
             </div>
 
-            {/* Contenuto pannello */}
+            {/* Contenuto pannello - Solo cookie tecnici */}
             <div className="p-6 space-y-6">
               {/* Cookie tecnici */}
               <div className="flex items-start gap-3">
@@ -170,23 +154,6 @@ export function CookieBanner() {
                   </p>
                   <p className="text-sm text-muted-foreground mt-1">
                     {COOKIE_BANNER.panel.categories[0].description}
-                  </p>
-                </div>
-              </div>
-
-              {/* Cookie analitici */}
-              <div className="flex items-start gap-3">
-                <Checkbox
-                  checked={analytics}
-                  onCheckedChange={(checked) => setAnalytics(checked === true)}
-                  className="mt-0.5"
-                />
-                <div className="flex-1">
-                  <p className="font-medium text-foreground">
-                    {COOKIE_BANNER.panel.categories[1].name}
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {COOKIE_BANNER.panel.categories[1].description}
                   </p>
                 </div>
               </div>
@@ -213,7 +180,7 @@ export function CookieBanner() {
               </Button>
               <Button
                 variant="default"
-                onClick={handleSavePreferences}
+                onClick={handleAccept}
                 className="flex-1"
               >
                 {COOKIE_BANNER.panel.save}
