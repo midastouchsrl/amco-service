@@ -138,34 +138,33 @@ export default function PreventivoPage() {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 to-foreground/80" />
           </div>
-          <div className="relative z-10 container-custom py-20 lg:py-28">
+          <div className="relative z-10 container-custom py-14 lg:py-28">
             <div className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
                 Preventivo
               </p>
-              <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl mb-5">
+              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white md:text-5xl mb-5">
                 {PREVENTIVO.hero.title}
               </h1>
-              <p className="text-lg text-white/80 leading-relaxed">
+              <p className="text-base lg:text-lg text-white/80 leading-relaxed">
                 {PREVENTIVO.hero.subtitle}
               </p>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
         </section>
 
         {/* Success State */}
-        <section className="py-20 lg:py-28 bg-surface">
+        <section className="py-12 lg:py-28 bg-surface">
           <div className="container-custom">
             <div className="max-w-2xl mx-auto">
-              <div className="rounded-2xl border border-brand/20 bg-white p-10 lg:p-14 text-center shadow-sm">
-                <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-brand-subtle">
-                  <CheckCircle2 className="h-10 w-10 text-brand" />
+              <div className="rounded-2xl border border-brand/20 bg-white p-6 lg:p-14 text-center shadow-sm">
+                <div className="mb-6 inline-flex h-16 w-16 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-brand-subtle">
+                  <CheckCircle2 className="h-8 w-8 lg:h-10 lg:w-10 text-brand" />
                 </div>
-                <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-3 tracking-tight">
+                <h2 className="text-xl lg:text-3xl font-bold text-foreground mb-3 tracking-tight">
                   Richiesta inviata con successo
                 </h2>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
+                <p className="text-base lg:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md mx-auto">
                   {PREVENTIVO.success}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -173,12 +172,12 @@ export default function PreventivoPage() {
                     onClick={() => reset({ ...{} } as PreventivoFormData)}
                     size="lg"
                     variant="outline"
-                    className="text-base"
+                    className="text-base w-full sm:w-auto"
                   >
                     <RotateCcw className="mr-2 h-4 w-4" />
                     Invia un&apos;altra richiesta
                   </Button>
-                  <Button asChild size="lg" className="text-base">
+                  <Button asChild size="lg" className="text-base w-full sm:w-auto">
                     <Link href="/">
                       Torna alla home
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -208,27 +207,25 @@ export default function PreventivoPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 to-foreground/80" />
         </div>
 
-        <div className="relative z-10 container-custom py-20 lg:py-28">
+        <div className="relative z-10 container-custom py-14 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
               Preventivo
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl mb-5">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white md:text-5xl mb-5">
               {PREVENTIVO.hero.title}
             </h1>
-            <p className="text-lg text-white/80 leading-relaxed">
+            <p className="text-base lg:text-lg text-white/80 leading-relaxed">
               {PREVENTIVO.hero.subtitle}
             </p>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
 
       {/* Form Section */}
-      <section className="py-16 md:py-24 bg-surface">
+      <section className="py-10 md:py-24 bg-surface">
         <div className="container-custom">
-          <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl mx-auto space-y-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="max-w-3xl mx-auto space-y-6 lg:space-y-8">
             {/* Honeypot field - nascosto */}
             <div className="hidden" aria-hidden="true">
               <label htmlFor="website">Website</label>
@@ -236,12 +233,12 @@ export default function PreventivoPage() {
             </div>
 
             {/* Sezione 1: Dati richiedente */}
-            <div className="rounded-2xl border border-border/40 bg-white p-6 lg:p-8 shadow-sm">
-              <div className="mb-6">
+            <div className="rounded-2xl border border-border/40 bg-white p-4 lg:p-8 shadow-sm">
+              <div className="mb-5 lg:mb-6">
                 <p className="text-sm font-medium text-brand tracking-wider uppercase mb-2">
                   Passo 1
                 </p>
-                <h2 className="text-xl font-bold text-foreground tracking-tight">
+                <h2 className="text-lg lg:text-xl font-bold text-foreground tracking-tight">
                   {PREVENTIVO.sections.requester.title}
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -249,7 +246,7 @@ export default function PreventivoPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
                 {/* Nome */}
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-sm font-medium text-foreground">
@@ -323,12 +320,12 @@ export default function PreventivoPage() {
             </div>
 
             {/* Sezione 2: Dati dello stabile */}
-            <div className="rounded-2xl border border-border/40 bg-white p-6 lg:p-8 shadow-sm">
-              <div className="mb-6">
+            <div className="rounded-2xl border border-border/40 bg-white p-4 lg:p-8 shadow-sm">
+              <div className="mb-5 lg:mb-6">
                 <p className="text-sm font-medium text-brand tracking-wider uppercase mb-2">
                   Passo 2
                 </p>
-                <h2 className="text-xl font-bold text-foreground tracking-tight">
+                <h2 className="text-lg lg:text-xl font-bold text-foreground tracking-tight">
                   {PREVENTIVO.sections.building.title}
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -336,7 +333,7 @@ export default function PreventivoPage() {
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-5 lg:space-y-6">
                 {/* Indirizzo */}
                 <div className="space-y-2">
                   <Label htmlFor="address" className="text-sm font-medium text-foreground">
@@ -355,7 +352,7 @@ export default function PreventivoPage() {
                 </div>
 
                 {/* Città, Provincia, CAP */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
                   <div className="space-y-2">
                     <Label htmlFor="city" className="text-sm font-medium text-foreground">
                       {PREVENTIVO.fields.city.label}
@@ -406,7 +403,7 @@ export default function PreventivoPage() {
                 </div>
 
                 {/* Numero unita */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-5">
                   {/* Appartamenti */}
                   <div className="space-y-2">
                     <Label htmlFor="apartments" className="text-sm font-medium text-foreground">
@@ -456,12 +453,12 @@ export default function PreventivoPage() {
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-border/40 pt-6">
-                  <p className="text-xs font-medium text-muted-foreground tracking-wider uppercase mb-5">
+                <div className="border-t border-border/40 pt-5 lg:pt-6">
+                  <p className="text-xs font-medium text-muted-foreground tracking-wider uppercase mb-4 lg:mb-5">
                     Caratteristiche dello stabile
                   </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
                     {/* Ascensore - Radio */}
                     <div className="space-y-3">
                       <Label className="text-sm font-medium text-foreground">
@@ -513,7 +510,7 @@ export default function PreventivoPage() {
                 </div>
 
                 {/* Riscaldamento - Select */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
                   <div className="space-y-2">
                     <Label className="text-sm font-medium text-foreground">
                       {PREVENTIVO.fields.heating.label} *
@@ -581,7 +578,7 @@ export default function PreventivoPage() {
             </div>
 
             {/* Footer form */}
-            <div className="rounded-2xl border border-border/40 bg-white p-6 lg:p-8 shadow-sm space-y-6">
+            <div className="rounded-2xl border border-border/40 bg-white p-4 lg:p-8 shadow-sm space-y-5 lg:space-y-6">
               {/* Nota informativa */}
               <div className="rounded-xl bg-surface border border-border/40 p-4">
                 <p className="text-sm text-muted-foreground leading-relaxed">

@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { X, AlertTriangle, ChevronRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -63,13 +64,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-4 border-b border-border">
-            <Link
-              href="/"
-              className="font-bold text-lg text-foreground"
-              onClick={onClose}
-            >
-              <span className="text-brand">AMCO</span>
-              <span className="text-foreground">Service</span>
+            <Link href="/" onClick={onClose}>
+              <Image
+                src="/images/logo.jpg"
+                alt="AMCO Service"
+                width={100}
+                height={37}
+                className="h-8 w-auto"
+              />
             </Link>
             <button
               onClick={onClose}

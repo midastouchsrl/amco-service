@@ -86,11 +86,11 @@ export function ContactForm() {
   if (submitStatus === "success") {
     return (
       <Card className="border-border/50 shadow-lg">
-        <CardContent className="pt-6">
-          <div className="flex flex-col items-center text-center space-y-4 py-8">
-            <div className="w-16 h-16 rounded-full bg-brand/10 flex items-center justify-center">
+        <CardContent className="p-4 pt-5 lg:pt-6 lg:p-6">
+          <div className="flex flex-col items-center text-center space-y-4 py-6 lg:py-8">
+            <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-brand/10 flex items-center justify-center">
               <svg
-                className="w-8 h-8 text-brand"
+                className="w-7 h-7 lg:w-8 lg:h-8 text-brand"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -104,7 +104,7 @@ export function ContactForm() {
                 />
               </svg>
             </div>
-            <p className="text-foreground text-lg font-medium">
+            <p className="text-foreground text-base lg:text-lg font-medium">
               {CONTATTI.form.success}
             </p>
           </div>
@@ -115,20 +115,20 @@ export function ContactForm() {
 
   return (
     <Card className="border-border/50 shadow-lg">
-      <CardHeader className="pb-4">
-        <CardTitle className="text-xl font-semibold text-foreground">
+      <CardHeader className="pb-3 lg:pb-4 px-4 pt-4 lg:px-6 lg:pt-6">
+        <CardTitle className="text-lg lg:text-xl font-semibold text-foreground">
           {CONTATTI.form.title}
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-4 pb-4 lg:px-6 lg:pb-6">
         {/* Messaggio di errore */}
         {submitStatus === "error" && (
-          <div className="mb-5 p-4 rounded-lg bg-destructive/10 border border-destructive/20">
+          <div className="mb-4 lg:mb-5 p-3 lg:p-4 rounded-lg bg-destructive/10 border border-destructive/20">
             <p className="text-sm text-destructive">{CONTATTI.form.error}</p>
           </div>
         )}
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 lg:space-y-5">
           {/* Campo honeypot nascosto */}
           <input
             type="text"
@@ -148,7 +148,7 @@ export function ContactForm() {
               placeholder={CONTATTI.form.fields.name.placeholder}
               {...register("name")}
               aria-invalid={!!errors.name}
-              className={errors.name ? "border-destructive" : ""}
+              className={`h-11 ${errors.name ? "border-destructive" : ""}`}
             />
             {errors.name && (
               <p className="text-sm text-destructive">{errors.name.message}</p>
@@ -164,7 +164,7 @@ export function ContactForm() {
               placeholder={CONTATTI.form.fields.email.placeholder}
               {...register("email")}
               aria-invalid={!!errors.email}
-              className={errors.email ? "border-destructive" : ""}
+              className={`h-11 ${errors.email ? "border-destructive" : ""}`}
             />
             {errors.email && (
               <p className="text-sm text-destructive">{errors.email.message}</p>
@@ -180,7 +180,7 @@ export function ContactForm() {
               placeholder={CONTATTI.form.fields.subject.placeholder}
               {...register("subject")}
               aria-invalid={!!errors.subject}
-              className={errors.subject ? "border-destructive" : ""}
+              className={`h-11 ${errors.subject ? "border-destructive" : ""}`}
             />
             {errors.subject && (
               <p className="text-sm text-destructive">{errors.subject.message}</p>
@@ -238,7 +238,7 @@ export function ContactForm() {
           <Button
             type="submit"
             size="lg"
-            className="w-full"
+            className="w-full text-base"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Invio in corso..." : CONTATTI.form.submit}

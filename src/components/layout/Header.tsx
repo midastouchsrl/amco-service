@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -31,20 +32,18 @@ export function Header() {
             : "bg-transparent"
         )}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+          <div className="flex items-center justify-between h-14 lg:h-20">
             {/* Logo */}
-            <Link
-              href="/"
-              className="flex items-center gap-1.5 text-xl font-bold tracking-tight"
-            >
-              <span className="text-brand">AMCO</span>
-              <span className={cn(
-                "transition-colors duration-500",
-                isScrolled ? "text-foreground" : "text-foreground"
-              )}>
-                Service
-              </span>
+            <Link href="/" className="flex-shrink-0">
+              <Image
+                src="/images/logo.jpg"
+                alt="AMCO Service"
+                width={120}
+                height={44}
+                className="h-8 lg:h-10 w-auto"
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -76,7 +75,7 @@ export function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="lg:hidden p-2 text-foreground hover:text-brand transition-colors duration-200"
+              className="lg:hidden p-2 -mr-2 text-foreground hover:text-brand transition-colors duration-200"
               onClick={() => setIsMobileMenuOpen(true)}
               aria-label="Apri menu"
             >

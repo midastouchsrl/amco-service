@@ -116,6 +116,8 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
   }
 
   /* Better focus states */
@@ -126,6 +128,8 @@
   /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
+    /* Prevent horizontal overflow on mobile */
+    overflow-x: hidden;
   }
 
   /* Selection color */
@@ -137,17 +141,17 @@
 @layer components {
   /* Section spacing */
   .section-padding {
-    @apply py-16 md:py-20 lg:py-24;
+    @apply py-12 md:py-20 lg:py-24;
   }
 
-  /* Container */
+  /* Container - px-4 on mobile, px-8 on sm, px-12 on lg */
   .container-custom {
-    @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-7xl mx-auto px-4 sm:px-8 lg:px-12;
   }
 
   /* Text container (narrower for readability) */
   .container-text {
-    @apply max-w-6xl mx-auto px-6 sm:px-8 lg:px-12;
+    @apply max-w-6xl mx-auto px-4 sm:px-8 lg:px-12;
   }
 
   /* Card hover effect */

@@ -36,50 +36,48 @@ export default function LavoraConNoiPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 via-foreground/40 to-foreground/80" />
         </div>
 
-        <div className="relative z-10 container-custom py-24 lg:py-32">
+        <div className="relative z-10 container-custom py-16 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
               Carriere
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-hero mb-5">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-hero mb-5">
               {LAVORA_CON_NOI.hero.title}
             </h1>
-            <p className="text-lg text-white/80 leading-relaxed">
+            <p className="text-base lg:text-lg text-white/80 leading-relaxed">
               {LAVORA_CON_NOI.hero.subtitle}
             </p>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" />
       </section>
 
       {/* Content Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-12 lg:py-28 bg-white">
         <div className="container-custom">
           <div className="max-w-2xl mx-auto">
             {/* Intro */}
-            <div className="text-center mb-14">
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-subtle mb-5">
-                <Users className="h-7 w-7 text-brand" aria-hidden="true" />
+            <div className="text-center mb-10 lg:mb-14">
+              <div className="inline-flex h-12 w-12 lg:h-14 lg:w-14 items-center justify-center rounded-2xl bg-brand-subtle mb-5">
+                <Users className="h-6 w-6 lg:h-7 lg:w-7 text-brand" aria-hidden="true" />
               </div>
-              <p className="text-lg text-text leading-relaxed max-w-lg mx-auto">
+              <p className="text-base lg:text-lg text-text leading-relaxed max-w-lg mx-auto">
                 {LAVORA_CON_NOI.intro}
               </p>
             </div>
 
             {/* CTA Card */}
-            <div className="rounded-2xl border border-border/40 bg-surface p-8 lg:p-10 text-center">
+            <div className="rounded-2xl border border-border/40 bg-surface p-6 lg:p-10 text-center">
               <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
                 Candidati
               </p>
-              <h2 className="text-xl font-bold text-foreground tracking-tight mb-4">
+              <h2 className="text-lg lg:text-xl font-bold text-foreground tracking-tight mb-4">
                 {LAVORA_CON_NOI.cta.text}
               </h2>
 
               {/* Email Link */}
               <a
                 href={mailtoLink}
-                className="inline-flex items-center gap-3 text-2xl font-semibold text-brand hover:text-brand-dark transition-colors duration-200"
+                className="inline-flex items-center gap-3 text-lg lg:text-2xl font-semibold text-brand hover:text-brand-dark transition-colors duration-200"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-subtle">
                   <Mail className="w-5 h-5 text-brand" aria-hidden="true" />
@@ -91,7 +89,7 @@ export default function LavoraConNoiPage() {
                 <Button
                   asChild
                   size="lg"
-                  className="text-base px-10"
+                  className="text-base px-10 w-full sm:w-auto"
                 >
                   <a href={mailtoLink}>
                     <Send className="w-4 h-4 mr-2" />

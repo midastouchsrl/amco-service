@@ -68,18 +68,18 @@ function ServiceCard({ title, description, icon }: ServiceCardProps) {
   const IconComponent = iconMap[icon];
 
   return (
-    <div className="group relative h-full rounded-2xl border border-border/60 bg-white p-6 transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5">
-      <div className="flex items-start gap-4">
+    <div className="group relative h-full rounded-2xl border border-border/60 bg-white p-4 lg:p-6 transition-all duration-300 hover:border-brand/30 hover:shadow-lg hover:shadow-brand/5">
+      <div className="flex items-start gap-3 lg:gap-4">
         <div className="flex-shrink-0">
-          <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-brand-subtle transition-colors duration-300 group-hover:bg-brand/15">
+          <div className="flex h-10 w-10 lg:h-11 lg:w-11 items-center justify-center rounded-xl bg-brand-subtle transition-colors duration-300 group-hover:bg-brand/15">
             {IconComponent && (
               <IconComponent className="h-5 w-5 text-brand" aria-hidden="true" />
             )}
           </div>
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-foreground mb-1.5 leading-snug">{title}</h3>
-          <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+          <h3 className="font-semibold text-foreground mb-1.5 leading-snug text-sm lg:text-base">{title}</h3>
+          <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed">{description}</p>
         </div>
       </div>
     </div>
@@ -99,22 +99,22 @@ function ServiceSection({ id, title, description, services, variant }: ServiceSe
   return (
     <section
       id={id}
-      className={`py-20 md:py-28 ${variant === "surface" ? "bg-surface" : "bg-white"}`}
+      className={`py-12 md:py-28 ${variant === "surface" ? "bg-surface" : "bg-white"}`}
     >
       <div className="container-custom">
         {/* Section header */}
-        <div className="mx-auto max-w-2xl text-center mb-14 md:mb-20">
+        <div className="mx-auto max-w-2xl text-center mb-10 md:mb-20">
           <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
             I nostri servizi
           </p>
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl mb-5">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground md:text-4xl mb-5">
             {title}
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">{description}</p>
+          <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">{description}</p>
         </div>
 
-        {/* Services grid - 3 columns with centered orphan items */}
-        <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3 services-grid">
+        {/* Services grid - 1 col mobile, 2 tablet, 3 desktop */}
+        <div className="grid gap-3 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 services-grid">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -147,22 +147,19 @@ export default function ServiziPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/60 via-foreground/40 to-foreground/80" />
         </div>
 
-        <div className="relative z-10 container-custom py-24 lg:py-32">
+        <div className="relative z-10 container-custom py-16 lg:py-32">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
               AMCO Service
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl lg:text-hero mb-6">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-hero mb-6">
               {hero.title}
             </h1>
-            <p className="text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base lg:text-lg text-white/80 leading-relaxed max-w-2xl mx-auto">
               {hero.subtitle}
             </p>
           </div>
         </div>
-
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
 
       {/* Amministrazione Condominiale */}
@@ -176,14 +173,13 @@ export default function ServiziPage() {
       />
 
       {/* Divider with image */}
-      <div className="relative h-64 md:h-80 overflow-hidden">
+      <div className="relative h-40 md:h-56 lg:h-80 overflow-hidden">
         <Image
           src="/images/verona-buildings.jpg"
           alt="Architettura veronese"
           fill
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand/20 via-transparent to-brand/20" />
         <div className="absolute inset-0 bg-black/20" />
       </div>
 

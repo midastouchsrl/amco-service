@@ -34,33 +34,31 @@ export default function ContattiPage() {
           <div className="absolute inset-0 bg-gradient-to-b from-foreground/50 to-foreground/80" />
         </div>
 
-        <div className="relative z-10 container-custom py-20 lg:py-28">
+        <div className="relative z-10 container-custom py-14 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4">
               Contattaci
             </p>
-            <h1 className="text-4xl font-bold tracking-tight text-white md:text-5xl mb-5">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white md:text-5xl mb-5">
               {hero.title}
             </h1>
-            <p className="text-lg text-white/80 leading-relaxed">{hero.subtitle}</p>
+            <p className="text-base lg:text-lg text-white/80 leading-relaxed">{hero.subtitle}</p>
           </div>
         </div>
-
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-surface to-transparent" />
       </section>
 
       {/* Contenuto principale - 2 colonne */}
-      <section className="py-16 md:py-24 bg-surface">
+      <section className="py-10 md:py-24 bg-surface">
         <div className="container-custom">
           <div className="mx-auto max-w-6xl">
-            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               {/* Colonna sinistra - Informazioni */}
-              <div className="space-y-8">
+              <div className="space-y-6 lg:space-y-8">
                 <div>
                   <p className="text-sm font-medium text-brand tracking-wider uppercase mb-2">
                     Informazioni
                   </p>
-                  <h2 className="text-2xl font-bold text-foreground mb-6 tracking-tight">
+                  <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-6 tracking-tight">
                     {info.title}
                   </h2>
                 </div>
@@ -68,7 +66,7 @@ export default function ContattiPage() {
                 {/* Avviso appuntamento */}
                 <div className="flex items-start gap-3 rounded-xl bg-brand-light border border-brand/20 p-4">
                   <AlertCircle className="h-5 w-5 text-brand flex-shrink-0 mt-0.5" aria-hidden="true" />
-                  <p className="font-semibold text-foreground text-[15px]">
+                  <p className="font-semibold text-foreground text-sm lg:text-[15px]">
                     {info.notice}
                   </p>
                 </div>
@@ -79,7 +77,7 @@ export default function ContattiPage() {
                     <MapPin className="h-5 w-5 text-brand" aria-hidden="true" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">{info.address}</p>
+                    <p className="font-medium text-foreground text-sm lg:text-base">{info.address}</p>
                     <a
                       href={map.googleUrl}
                       target="_blank"
@@ -102,7 +100,7 @@ export default function ContattiPage() {
                       <div>
                         <a
                           href={`tel:${phone.number.replace(/\s/g, "")}`}
-                          className="font-medium text-foreground hover:text-brand transition-colors"
+                          className="font-medium text-foreground hover:text-brand transition-colors text-sm lg:text-base"
                         >
                           {phone.number}
                         </a>
@@ -138,7 +136,7 @@ export default function ContattiPage() {
                   <div>
                     <a
                       href={`mailto:${info.email}`}
-                      className="font-medium text-foreground hover:text-brand transition-colors"
+                      className="font-medium text-foreground hover:text-brand transition-colors text-sm lg:text-base"
                     >
                       {info.email}
                     </a>

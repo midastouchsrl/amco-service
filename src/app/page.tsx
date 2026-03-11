@@ -36,7 +36,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[75vh] lg:min-h-[85vh] flex items-center">
+      <section className="relative min-h-[50vh] lg:min-h-[85vh] flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -51,15 +51,15 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container-custom py-24 lg:py-36">
+        <div className="relative z-10 container-custom py-16 lg:py-36">
           <div className="max-w-2xl">
             <p className="text-sm font-medium text-brand-light tracking-wider uppercase mb-4 opacity-90">
               Amministrazione condominiale a Verona
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-hero font-bold text-white mb-6 leading-tight tracking-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-hero font-bold text-white mb-6 leading-tight tracking-tight">
               {HERO.tagline}
             </h1>
-            <p className="text-lg lg:text-xl text-white/85 mb-10 leading-relaxed max-w-xl">
+            <p className="text-base lg:text-xl text-white/85 mb-10 leading-relaxed max-w-xl">
               {HERO.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -82,24 +82,21 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        {/* Bottom gradient fade */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent z-10" />
       </section>
 
       {/* About Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-12 lg:py-28 bg-white">
         <div className="container-custom">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             {/* Text content */}
             <div className="max-w-xl">
               <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
                 Chi siamo
               </p>
-              <h2 className="text-2xl lg:text-h2 font-bold text-foreground mb-6 tracking-tight">
+              <h2 className="text-xl lg:text-h2 font-bold text-foreground mb-6 tracking-tight">
                 {HOME_ABOUT.title}
               </h2>
-              <p className="text-lg text-text leading-relaxed mb-8">{HOME_ABOUT.description}</p>
+              <p className="text-base lg:text-lg text-text leading-relaxed mb-8">{HOME_ABOUT.description}</p>
               <Button asChild variant="secondary" className="group">
                 <Link href={HOME_ABOUT.cta.href}>
                   {HOME_ABOUT.cta.label}
@@ -116,34 +113,33 @@ export default function HomePage() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 lg:py-28 bg-surface">
+      <section className="py-12 lg:py-28 bg-surface">
         <div className="container-custom">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 lg:mb-14">
             <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
               Servizi
             </p>
-            <h2 className="text-2xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
+            <h2 className="text-xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
               {HOME_SERVICES.title}
             </h2>
-            <p className="text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base lg:text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
               {HOME_SERVICES.subtitle}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8 max-w-4xl mx-auto">
             {HOME_SERVICES.categories.map((category) => (
               <Card
                 key={category.title}
                 className="group card-hover border-border/50 bg-white overflow-hidden"
               >
-                <CardHeader className="pb-2">
+                <CardHeader className="pb-2 p-4 lg:p-6">
                   <div className="w-12 h-12 rounded-xl bg-brand-subtle flex items-center justify-center mb-4 transition-colors group-hover:bg-brand/15">
                     {category.icon === "Building2" ? (
                       <Building2 className="w-6 h-6 text-brand" />
@@ -151,17 +147,17 @@ export default function HomePage() {
                       <Calculator className="w-6 h-6 text-brand" />
                     )}
                   </div>
-                  <CardTitle className="text-xl tracking-tight">{category.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
+                  <CardTitle className="text-lg lg:text-xl tracking-tight">{category.title}</CardTitle>
+                  <CardDescription className="text-sm lg:text-base leading-relaxed">
                     {category.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4 pt-0 lg:p-6 lg:pt-0">
                   <ul className="space-y-2.5 mb-6">
                     {category.items.map((item) => (
                       <li
                         key={item}
-                        className="flex items-center gap-3 text-text"
+                        className="flex items-center gap-3 text-sm lg:text-base text-text"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0" />
                         {item}
@@ -182,27 +178,27 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      <section className="relative py-12 lg:py-28 bg-white overflow-hidden">
         <div className="container-custom">
-          <div className="text-center mb-14">
+          <div className="text-center mb-10 lg:mb-14">
             <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
               Testimonianze
             </p>
-            <h2 className="text-2xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
+            <h2 className="text-xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
               {TESTIMONIALS_SECTION.title}
             </h2>
-            <p className="text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base lg:text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
               {TESTIMONIALS_SECTION.subtitle}
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {TESTIMONIALS.map((testimonial) => (
               <Card
                 key={testimonial.name}
                 className="border-border/40 bg-surface/80 hover:bg-surface transition-colors duration-300"
               >
-                <CardContent className="pt-6">
+                <CardContent className="p-4 pt-5 lg:pt-6 lg:p-6">
                   <div className="flex gap-0.5 mb-4">
                     {[...Array(5)].map((_, i) => (
                       <Star
@@ -211,7 +207,7 @@ export default function HomePage() {
                       />
                     ))}
                   </div>
-                  <p className="text-text italic mb-5 text-[15px] leading-relaxed">
+                  <p className="text-text italic mb-5 text-sm lg:text-[15px] leading-relaxed">
                     &ldquo;{testimonial.text}&rdquo;
                   </p>
                   <div className="pt-4 border-t border-border/40">
@@ -227,7 +223,7 @@ export default function HomePage() {
       </section>
 
       {/* Image Divider */}
-      <div className="relative h-56 md:h-72 overflow-hidden">
+      <div className="relative h-40 md:h-56 lg:h-72 overflow-hidden">
         <Image
           src="/images/verona-ponte.jpg"
           alt="Ponte Pietra, Verona"
@@ -238,17 +234,17 @@ export default function HomePage() {
       </div>
 
       {/* FAQ Section */}
-      <section className="py-20 lg:py-28 bg-white">
+      <section className="py-12 lg:py-28 bg-white">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-14">
+            <div className="text-center mb-10 lg:mb-14">
               <p className="text-sm font-medium text-brand tracking-wider uppercase mb-3">
                 FAQ
               </p>
-              <h2 className="text-2xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
+              <h2 className="text-xl lg:text-h2 font-bold text-foreground mb-4 tracking-tight">
                 {FAQ_SECTION.title}
               </h2>
-              <p className="text-lg text-text-muted leading-relaxed">{FAQ_SECTION.subtitle}</p>
+              <p className="text-base lg:text-lg text-text-muted leading-relaxed">{FAQ_SECTION.subtitle}</p>
             </div>
 
             <Accordion type="single" collapsible className="space-y-3">
@@ -256,12 +252,12 @@ export default function HomePage() {
                 <AccordionItem
                   key={index}
                   value={`item-${index}`}
-                  className="bg-surface border border-border/40 rounded-xl px-6 data-[state=open]:border-brand/20 transition-colors"
+                  className="bg-surface border border-border/40 rounded-xl px-4 lg:px-6 data-[state=open]:border-brand/20 transition-colors"
                 >
-                  <AccordionTrigger className="text-left font-medium text-foreground hover:text-brand py-5">
+                  <AccordionTrigger className="text-left font-medium text-foreground hover:text-brand py-4 lg:py-5 text-sm lg:text-base">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-text leading-relaxed pb-5">
+                  <AccordionContent className="text-text leading-relaxed pb-4 lg:pb-5 text-sm lg:text-base">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -272,7 +268,7 @@ export default function HomePage() {
       </section>
 
       {/* CTA Banner */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      <section className="relative py-16 lg:py-32 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -286,10 +282,10 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 container-custom text-center">
-          <h2 className="text-2xl lg:text-h2 font-bold text-white mb-5 tracking-tight">
+          <h2 className="text-xl lg:text-h2 font-bold text-white mb-5 tracking-tight">
             {CTA_BANNER.title}
           </h2>
-          <p className="text-lg text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base lg:text-lg text-white/85 mb-10 max-w-2xl mx-auto leading-relaxed">
             {CTA_BANNER.description}
           </p>
           <Button
