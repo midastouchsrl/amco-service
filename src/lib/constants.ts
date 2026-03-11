@@ -646,15 +646,15 @@ export const PRIVACY = {
     recipients: {
       title: "4. Destinatari dei dati",
       items: [
-        "Hosting provider: Vercel Inc. (San Francisco, USA) — per il funzionamento e la distribuzione del sito web",
-        "Servizio invio email: Resend Inc. (San Francisco, USA) — per l'inoltro dei messaggi inviati tramite i form del sito",
+        "Hosting provider stabilito negli USA, certificato EU-US Data Privacy Framework — per il funzionamento e la distribuzione del sito web",
+        "Servizio di invio email transazionali stabilito negli USA, certificato EU-US Data Privacy Framework — per l'inoltro dei messaggi inviati tramite i form del sito",
       ],
-      note: "Il sito contiene un link esterno al portale MioCondominio.eu per l'accesso all'area riservata dei condomini. Tale collegamento non comporta alcuna trasmissione di dati personali da parte di questo sito.",
+      note: "Il sito contiene un collegamento esterno al portale per l'accesso all'area riservata dei condomini. Tale collegamento non comporta alcuna trasmissione di dati personali da parte di questo sito. L'elenco puntuale dei fornitori e dei relativi DPA è disponibile presso il Titolare su richiesta.",
     },
     transfers: {
       title: "5. Trasferimenti extra-UE",
       content:
-        "I dati personali possono essere trasferiti negli Stati Uniti tramite i seguenti fornitori: Vercel Inc. (hosting) e Resend Inc. (invio email). Entrambi i fornitori sono certificati ai sensi del EU-US Data Privacy Framework (DPF), riconosciuto dalla Commissione Europea con decisione di adeguatezza del 10 luglio 2023 (Decisione C(2023) 4745). In aggiunta, sono in essere le Clausole Contrattuali Standard (SCC) della Commissione Europea e i Data Processing Agreement (DPA) sottoscritti con ciascun fornitore, ai sensi degli artt. 46-49 del GDPR.",
+        "I dati personali possono essere trasferiti negli Stati Uniti tramite fornitori di servizi certificati ai sensi del EU-US Data Privacy Framework (DPF), riconosciuto dalla Commissione Europea con decisione di adeguatezza del 10 luglio 2023 (Decisione C(2023) 4745). In aggiunta, sono in essere le Clausole Contrattuali Standard (SCC) della Commissione Europea e i Data Processing Agreement (DPA) sottoscritti con ciascun fornitore, ai sensi degli artt. 46-49 del GDPR. L'elenco dei sub-responsabili è disponibile presso il Titolare su richiesta.",
     },
     retention: {
       title: "6. Periodo di conservazione",
