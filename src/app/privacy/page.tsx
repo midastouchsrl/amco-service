@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
               {sections.recipients.title}
             </h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mb-4">
               {sections.recipients.items.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 text-text">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 flex-shrink-0" />
@@ -115,6 +115,11 @@ export default function PrivacyPage() {
                 </li>
               ))}
             </ul>
+            {"note" in sections.recipients && (
+              <p className="text-sm text-text-muted leading-relaxed pt-4 border-t border-border">
+                {sections.recipients.note}
+              </p>
+            )}
           </section>
 
           {/* Section 5: Trasferimenti extra-UE */}
@@ -147,7 +152,12 @@ export default function PrivacyPage() {
             <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
               {sections.rights.title}
             </h2>
-            <ul className="grid sm:grid-cols-2 gap-2 mb-6">
+            {"intro" in sections.rights && (
+              <p className="text-text leading-relaxed mb-6">
+                {sections.rights.intro}
+              </p>
+            )}
+            <ul className="space-y-2 mb-6">
               {sections.rights.items.map((item, index) => (
                 <li key={index} className="flex items-start gap-3 text-text">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand mt-2 flex-shrink-0" />
@@ -155,18 +165,28 @@ export default function PrivacyPage() {
                 </li>
               ))}
             </ul>
-            <div className="pt-4 border-t border-border">
-              <p className="text-text font-medium mb-1">
+            <div className="pt-4 border-t border-border space-y-1">
+              <p className="text-text font-medium">
                 {sections.rights.complaint.label}
               </p>
+              {"authority" in sections.rights.complaint && (
+                <p className="text-text-muted text-sm">
+                  {sections.rights.complaint.authority}
+                </p>
+              )}
               <p className="text-text-muted text-sm">
                 {sections.rights.complaint.address}
               </p>
+              {"email" in sections.rights.complaint && (
+                <p className="text-text-muted text-sm">
+                  Email: {sections.rights.complaint.email}
+                </p>
+              )}
               <a
                 href={`https://${sections.rights.complaint.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-brand hover:text-brand-dark text-sm underline underline-offset-4"
+                className="text-brand hover:text-brand-dark text-sm underline underline-offset-4 inline-block"
               >
                 {sections.rights.complaint.website}
               </a>
@@ -182,6 +202,18 @@ export default function PrivacyPage() {
               {sections.provision.content}
             </p>
           </section>
+
+          {/* Section 9: Processi decisionali automatizzati */}
+          {"automatedDecisions" in sections && (
+            <section className="bg-surface rounded-xl p-6 lg:p-8">
+              <h2 className="text-xl lg:text-2xl font-semibold text-foreground mb-4">
+                {sections.automatedDecisions.title}
+              </h2>
+              <p className="text-text leading-relaxed">
+                {sections.automatedDecisions.content}
+              </p>
+            </section>
+          )}
 
           {/* Last Update */}
           <div className="text-center pt-8 border-t border-border">

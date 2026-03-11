@@ -55,9 +55,14 @@ export default function CookiePolicyPage() {
       <section className="py-16 lg:py-20 bg-surface">
         <div className="container-text">
           <div className="max-w-3xl">
-            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-8 tracking-tight">
+            <h2 className="text-xl lg:text-2xl font-bold text-foreground mb-4 tracking-tight">
               {COOKIE_POLICY.cookies.title}
             </h2>
+            {"description" in COOKIE_POLICY.cookies && (
+              <p className="text-text leading-relaxed mb-8">
+                {COOKIE_POLICY.cookies.description}
+              </p>
+            )}
 
             {/* Responsive Table */}
             <div className="overflow-x-auto rounded-2xl border border-border/40 bg-white">

@@ -603,7 +603,8 @@ export const PRIVACY = {
       title: "1. Titolare del trattamento",
       content: [
         `${COMPANY.name}`,
-        `${COMPANY.address}`,
+        `Sede legale: ${COMPANY.address}`,
+        `P.IVA: ${COMPANY.vatId} — REA: ${COMPANY.rea}`,
         `Email: ${COMPANY.email}`,
         `PEC: ${COMPANY.pec}`,
         `Tel: ${COMPANY.phone1}`,
@@ -615,75 +616,83 @@ export const PRIVACY = {
         {
           purpose: "Navigazione del sito e sicurezza",
           basis: "Legittimo interesse (art. 6.1.f)",
-          data: "Dati di navigazione (IP, browser, pagine visitate)",
+          data: "Dati di navigazione (indirizzo IP, browser, sistema operativo, pagine visitate, data e ora di accesso)",
         },
         {
-          purpose: "Risposta a richieste via form contatto/preventivo",
+          purpose: "Risposta a richieste via form contatto",
           basis: "Esecuzione misure precontrattuali (art. 6.1.b)",
-          data: "Dati inseriti nel form (nome, email, telefono, ecc.)",
+          data: "Nome, cognome, indirizzo email, numero di telefono, oggetto e testo del messaggio",
         },
         {
-          purpose: "Cookie tecnici necessari al funzionamento",
+          purpose: "Risposta a richieste via form preventivo",
+          basis: "Esecuzione misure precontrattuali (art. 6.1.b)",
+          data: "Nome, cognome, telefono, email, indirizzo e dati relativi all'immobile (città, provincia, CAP, numero unità, caratteristiche edificio), eventuali note",
+        },
+        {
+          purpose: "Memorizzazione locale delle preferenze",
           basis: "Legittimo interesse (art. 6.1.f)",
-          data: "Identificativi di sessione",
-        },
-        {
-          purpose: "Cookie non tecnici (se presenti)",
-          basis: "Consenso (art. 6.1.a)",
-          data: "Dipende dal servizio",
+          data: "Preferenza relativa all'avviso cookie, memorizzata esclusivamente nel browser tramite localStorage (nessuna trasmissione al server)",
         },
       ],
     },
     categories: {
       title: "3. Categorie di dati personali",
       items: [
-        "Dati di navigazione (raccolti automaticamente)",
-        "Dati forniti volontariamente tramite form",
+        "Dati di navigazione raccolti automaticamente: indirizzo IP, tipo di browser, sistema operativo, pagine visitate, data e ora di accesso",
+        "Dati identificativi forniti tramite form di contatto: nome, cognome, indirizzo email, numero di telefono, testo del messaggio",
+        "Dati forniti tramite form preventivo: nome, cognome, telefono, email, indirizzo e dati relativi all'immobile (città, provincia, CAP, numero unità abitative, garage, caratteristiche dell'edificio), eventuali note",
       ],
     },
     recipients: {
       title: "4. Destinatari dei dati",
       items: [
-        "Hosting provider: Vercel Inc. (per il funzionamento del sito)",
-        "Servizio anti-spam: Friendly Captcha (se configurato — provider europeo)",
-        "Servizio invio email: Resend/Brevo (per l'invio delle email dei form)",
-        "Portale condomini: MioCondominio.eu (per l'accesso all'area riservata)",
+        "Hosting provider: Vercel Inc. (San Francisco, USA) — per il funzionamento e la distribuzione del sito web",
+        "Servizio invio email: Resend Inc. (San Francisco, USA) — per l'inoltro dei messaggi inviati tramite i form del sito",
       ],
+      note: "Il sito contiene un link esterno al portale MioCondominio.eu per l'accesso all'area riservata dei condomini. Tale collegamento non comporta alcuna trasmissione di dati personali da parte di questo sito.",
     },
     transfers: {
       title: "5. Trasferimenti extra-UE",
       content:
-        "Vercel utilizza server in regione EU configurabili. Friendly Captcha è un provider EU-based senza trasferimento extra-UE. Per ogni sub-processor, vengono adottate le misure appropriate.",
+        "I dati personali possono essere trasferiti negli Stati Uniti tramite i seguenti fornitori: Vercel Inc. (hosting) e Resend Inc. (invio email). Entrambi i fornitori sono certificati ai sensi del EU-US Data Privacy Framework (DPF), riconosciuto dalla Commissione Europea con decisione di adeguatezza del 10 luglio 2023 (Decisione C(2023) 4745). In aggiunta, sono in essere le Clausole Contrattuali Standard (SCC) della Commissione Europea e i Data Processing Agreement (DPA) sottoscritti con ciascun fornitore, ai sensi degli artt. 46-49 del GDPR.",
     },
     retention: {
       title: "6. Periodo di conservazione",
       items: [
-        "Dati form contatto/preventivo: 12 mesi dalla richiesta",
-        "Dati di navigazione: durata della sessione",
-        "Cookie: secondo tabella nella cookie policy",
+        "Dati form contatto/preventivo: 12 mesi dalla richiesta, successivamente cancellati",
+        "Dati di navigazione (log server): conservati dall'hosting provider per il periodo necessario alla sicurezza e al funzionamento del servizio, secondo la policy di conservazione di Vercel Inc.",
+        "Preferenze localStorage: 180 giorni dalla scelta, memorizzate esclusivamente nel browser dell'utente",
       ],
     },
     rights: {
       title: "7. Diritti dell'interessato",
+      intro: `L'interessato può esercitare i seguenti diritti in qualsiasi momento, inviando una richiesta all'indirizzo email ${COMPANY.email} o alla PEC ${COMPANY.pec}. Il Titolare fornirà riscontro entro 30 giorni dalla ricezione della richiesta, prorogabili di ulteriori 60 giorni in caso di complessità, previa comunicazione all'interessato.`,
       items: [
-        "Accesso (art. 15)",
-        "Rettifica (art. 16)",
-        "Cancellazione (art. 17)",
-        "Limitazione (art. 18)",
-        "Portabilità (art. 20)",
-        "Opposizione (art. 21)",
-        "Revoca del consenso (art. 7.3)",
+        "Diritto di accesso ai propri dati (art. 15)",
+        "Diritto di rettifica dei dati inesatti (art. 16)",
+        "Diritto alla cancellazione — diritto all'oblio (art. 17)",
+        "Diritto di limitazione del trattamento (art. 18)",
+        "Diritto alla portabilità dei dati (art. 20)",
+        "Diritto di opposizione al trattamento (art. 21)",
+        "Diritto di revoca del consenso in qualsiasi momento, senza pregiudicare la liceità del trattamento basato sul consenso prestato prima della revoca (art. 7.3)",
       ],
       complaint: {
-        label: "Reclamo all'Autorità Garante:",
-        address: "Piazza di Monte Citorio 121, 00186 Roma",
+        label: "Diritto di proporre reclamo all'Autorità di controllo:",
+        authority: "Garante per la protezione dei dati personali",
+        address: "Piazza Venezia 11, 00187 Roma",
+        email: "protocollo@gpdp.it",
         website: "www.garanteprivacy.it",
       },
     },
     provision: {
       title: "8. Conferimento dei dati",
       content:
-        "Facoltativo. Il mancato conferimento dei dati nei form impedirà di dar seguito alla richiesta.",
+        "Il conferimento dei dati è facoltativo. Il mancato conferimento dei dati nei form impedirà di dar seguito alla richiesta. I dati di navigazione sono raccolti automaticamente per il funzionamento del sito.",
+    },
+    automatedDecisions: {
+      title: "9. Processi decisionali automatizzati",
+      content:
+        "Il sito non effettua attività di profilazione né adotta processi decisionali automatizzati che producano effetti giuridici o incidano significativamente sull'interessato (art. 22 GDPR). È presente un sistema automatico di limitazione delle richieste (rate limiting) basato sull'indirizzo IP, con la sola finalità di proteggere il sito da abusi e attacchi informatici, senza che ciò comporti profilazione dell'utente.",
     },
   },
 } as const;
@@ -694,35 +703,29 @@ export const PRIVACY = {
 export const COOKIE_POLICY = {
   hero: {
     title: "Cookie Policy",
-    subtitle: "Informazioni sui cookie utilizzati da questo sito",
+    subtitle: "Informazioni sulle tecnologie di memorizzazione utilizzate da questo sito",
   },
   lastUpdate: "Marzo 2026",
   intro: {
-    title: "Cosa sono i cookie",
+    title: "Cosa sono i cookie e le tecnologie di memorizzazione locale",
     content:
-      "I cookie sono piccoli file di testo che vengono memorizzati sul tuo dispositivo quando visiti un sito web. Servono a migliorare l'esperienza di navigazione e a fornire funzionalità personalizzate.",
+      "I cookie sono piccoli file di testo che vengono memorizzati sul tuo dispositivo quando visiti un sito web. Il localStorage è una tecnologia di memorizzazione del browser che consente di salvare dati in locale senza trasmetterli al server. Questo sito non installa cookie di profilazione né di tracciamento. Viene utilizzato esclusivamente il localStorage del browser per memorizzare la scelta relativa a questo avviso informativo.",
   },
   cookies: {
-    title: "Cookie utilizzati da questo sito",
+    title: "Tecnologie di memorizzazione utilizzate",
+    description: "Questo sito non installa cookie HTTP. L'unica tecnologia di memorizzazione utilizzata è il localStorage del browser, come indicato di seguito.",
     items: [
       {
-        name: "cookie-consent",
+        name: "cookie-consent (localStorage)",
         type: "Tecnico",
-        purpose: "Memorizza le preferenze cookie dell'utente",
-        duration: "180 giorni",
-        party: "Prima parte",
-      },
-      {
-        name: "cookie-sessione",
-        type: "Tecnico",
-        purpose: "Funzionamento del sito",
-        duration: "Sessione",
-        party: "Prima parte",
+        purpose: "Memorizza la scelta dell'utente relativa all'avviso informativo sulle tecnologie di memorizzazione",
+        duration: "180 giorni (cancellazione automatica alla scadenza o manuale dall'utente)",
+        party: "Prima parte (solo locale, nessuna trasmissione al server)",
       },
     ],
   },
   manage: {
-    title: "Come gestire i cookie dal browser",
+    title: "Come gestire i dati memorizzati dal browser",
     browsers: [
       { name: "Google Chrome", url: "https://support.google.com/chrome/answer/95647" },
       { name: "Mozilla Firefox", url: "https://support.mozilla.org/it/kb/Gestione%20dei%20cookie" },
@@ -733,7 +736,7 @@ export const COOKIE_POLICY = {
   revoke: {
     title: "Come revocare il consenso",
     content:
-      "È possibile modificare le preferenze in qualsiasi momento cliccando su 'Gestisci cookie' nel footer del sito.",
+      "È possibile modificare le preferenze in qualsiasi momento cliccando su 'Gestisci preferenze' nel footer del sito, oppure cancellando i dati del sito dalle impostazioni del browser.",
   },
 } as const;
 
@@ -741,25 +744,25 @@ export const COOKIE_POLICY = {
 // COOKIE BANNER
 // ============================================
 export const COOKIE_BANNER = {
-  title: "Utilizzo dei cookie",
+  title: "Informativa sulle tecnologie di memorizzazione",
   description:
-    "Questo sito utilizza cookie tecnici necessari al funzionamento. Puoi accettarli o rifiutarli.",
-  accept: "Accetta",
-  reject: "Rifiuta",
-  manage: "Gestisci preferenze",
+    "Questo sito non utilizza cookie di profilazione né di tracciamento. Viene utilizzato esclusivamente il localStorage del browser per memorizzare la tua preferenza relativa a questo avviso. Nessun dato viene trasmesso a terzi tramite questa tecnologia.",
+  accept: "Ho capito",
+  reject: "Chiudi",
+  manage: "Maggiori informazioni",
   policy: "Cookie Policy",
   close: "Chiudi",
   panel: {
-    title: "Gestisci preferenze cookie",
+    title: "Dettaglio tecnologie di memorizzazione",
     categories: [
       {
         id: "technical",
-        name: "Cookie tecnici",
-        description: "Necessari per il funzionamento del sito. Non possono essere disattivati.",
+        name: "localStorage (tecnico)",
+        description: "Utilizzato esclusivamente per memorizzare la scelta relativa a questo avviso. I dati restano nel browser e non vengono trasmessi al server.",
         required: true,
       },
     ],
-    save: "Salva preferenze",
+    save: "Ho capito",
   },
 } as const;
 
