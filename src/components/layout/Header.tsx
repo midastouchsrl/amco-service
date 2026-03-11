@@ -37,10 +37,10 @@ export function Header() {
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="AMCO Service"
-                width={120}
-                height={44}
+                width={240}
+                height={94}
                 className="h-8 lg:h-10 w-auto"
                 priority
               />

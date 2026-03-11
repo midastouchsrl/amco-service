@@ -157,19 +157,19 @@ export const HOME_SERVICES = {
 export const TESTIMONIALS = [
   {
     name: "Daria",
-    text: "La cortesia e la professionalità di tutti i collaboratori. La disponibilità e la tempestività degli interventi richiesti.",
+    text: "Conosco questa realtà da diversi anni e, avendo avuto a che fare con altri studi di amministrazione condominiale, sento di poter dire che AMCO Service si distingue dagli altri sia per l'elevata professionalità, sia per la presenza e disponibilità nei confronti dei condomini. Sempre reattivi e rapidi nel dare riscontro oltre che chiari nel fornire informazioni e spiegazioni. Consigliato!",
   },
   {
     name: "Roberta",
-    text: "Abbiamo dato la gestione ad AMCO Service fin dalla costruzione dello stabile. Sono attenti, veloci e professionali. A disposizione per ogni necessità.",
+    text: "Persone gentili e disponibili, e un servizio professionale e tempestivo. Consigliati.",
   },
   {
     name: "Chiara",
-    text: "Competenza, affidabilità, gentilezza e disponibilità sono la regola. Non l'eccezione. Consigliati!",
+    text: "Finalmente un amministratore con la A maiuscola. Professionali, competenti ma soprattutto veloci nel risponderti e sempre disponibili. Grazie mille!",
   },
   {
     name: "Cecilia",
-    text: "Una gestione sempre puntuale del condominio ed una grande disponibilità in caso di emergenza. Consiglio!",
+    text: "Amministrazione estremamente competente e attenta. Ottima capacità di mediazione e di gestione di situazioni condominiali complesse. La loro reperibilità è ottima: sono sempre reperibili, 24h/24h per qualsiasi emergenza.",
   },
 ] as const;
 
@@ -438,8 +438,9 @@ export const MODULISTICA = {
   documents: [
     {
       title: "Modulo Anagrafica Condominiale",
-      description: "Modulo per la comunicazione dei dati anagrafici dei condomini",
+      description: "Registro di anagrafe condominiale ai sensi dell'art. 1130 c.c. — Dichiarazione sostitutiva dell'atto di notorietà per la comunicazione dei dati anagrafici, catastali e di sicurezza dell'unità immobiliare.",
       file: "/documents/modulo-anagrafica-condominiale.pdf",
+      formUrl: "https://app.amministratoreprotetto.it/anagrafica-condominiale",
       icon: "FileDown",
     },
   ],

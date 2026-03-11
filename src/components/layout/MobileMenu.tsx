@@ -66,10 +66,10 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           <div className="flex items-center justify-between p-4 border-b border-border">
             <Link href="/" onClick={onClose}>
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="AMCO Service"
-                width={100}
-                height={37}
+                width={200}
+                height={78}
                 className="h-8 w-auto"
               />
             </Link>

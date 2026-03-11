@@ -2,7 +2,7 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { FileDown, Download, Info } from "lucide-react";
+import { FileDown, Download, Info, ExternalLink } from "lucide-react";
 import { MODULISTICA, SITE_META } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -82,17 +82,31 @@ export default function ModulisticaPage() {
                       <p className="text-sm lg:text-base text-muted-foreground leading-relaxed mb-4 lg:mb-5">
                         {doc.description}
                       </p>
-                      <Button asChild size="lg" className="text-base w-full sm:w-auto">
-                        <Link
-                          href={doc.file}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          download
-                        >
-                          <Download className="mr-2 h-4 w-4" aria-hidden="true" />
-                          Scarica PDF
-                        </Link>
-                      </Button>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Button asChild size="lg" className="text-base w-full sm:w-auto">
+                          <Link
+                            href={doc.file}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download
+                          >
+                            <Download className="mr-2 h-4 w-4" aria-hidden="true" />
+                            Scarica PDF
+                          </Link>
+                        </Button>
+                        {"formUrl" in doc && (
+                          <Button asChild size="lg" variant="outline" className="text-base w-full sm:w-auto">
+                            <a
+                              href={(doc as { formUrl: string }).formUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <ExternalLink className="mr-2 h-4 w-4" aria-hidden="true" />
+                              Compila online
+                            </a>
+                          </Button>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>

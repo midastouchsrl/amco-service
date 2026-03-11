@@ -18,7 +18,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-foreground">
+    <footer className="bg-[#384b5a]">
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 py-10 lg:py-20">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-14">
@@ -26,11 +26,11 @@ export function Footer() {
           <div className="space-y-4 lg:space-y-5">
             <Link href="/" className="inline-block">
               <Image
-                src="/images/logo.jpg"
+                src="/images/logo-white.png"
                 alt="AMCO Service"
-                width={120}
-                height={44}
-                className="h-9 w-auto brightness-0 invert"
+                width={240}
+                height={94}
+                className="h-9 w-auto"
               />
             </Link>
             <p className="text-sm text-white/50 leading-relaxed">{FOOTER.tagline}</p>
